@@ -1,0 +1,12 @@
+<h1 th:text="${hero.name} + ' the ' + ${hero.clase}"></h1>
+<p>Level: <span th:text="${hero.nivel}"></span></p>
+<p>Experience: <span th:text="${hero.experience}"></span></p>
+
+<h2>Missions</h2>
+<ul>
+  <li th:each="quest : ${hero.quests}">
+    <span th:text="${quest.title}"></span> -
+    <span th:text="${quest.solved ? 'Completed' : 'Pending'}"></span>
+  </li>
+</ul>
+<a th:href="@{/heroes}">Back to Heroes</a>

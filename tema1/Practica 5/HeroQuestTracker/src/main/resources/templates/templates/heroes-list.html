@@ -1,0 +1,6 @@
+<h1>Heroes</h1>
+<ul>
+  <li th:each="hero : ${heroes}">
+    <a th:href="@{/heroes/{name}(name=${hero.name})}" th:text="${hero.name}"></a>
+  </li>
+</ul>

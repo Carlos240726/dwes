@@ -1,0 +1,16 @@
+<h1>Quests</h1>
+<a th:href="@{/quests/new}">Create Random Quest</a>
+<table>
+<tr><th>Title</th><th>Hero</th><th>Experience</th><th>Status</th><th>Actions</th></tr>
+<tr th:each="quest : ${quests}">
+    <td th:text="${quest.title}"></td>
+    <td th:text="${quest.hero.name}"></td>
+    <td th:text="${quest.experience}"></td>
+    <td th:text="${quest.solved ? 'Completed' : 'Pending'}"></td>
+    <td>
+        <a th:if="${!quest.solved}" th:href="@{/quests/solve/{id}(id=${quest.id})}">Mark as Completed</a>
+        <a th:href="@{/quests/fail/{id}(id=${quest.id})}">Mark as failed</a>
+    </td>
+</tr>
+</table>
+
