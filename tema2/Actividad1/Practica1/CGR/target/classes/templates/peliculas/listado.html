@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Peliculas</title>
+</head>
+<body>
+<h1>Peliculas</h1>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Titulo</th>
+        <th>Genero</th>
+        <th>Puntuacion</th>
+        <th>Enlace IMBD</th>
+        <th>Imagen</th>
+        <th>Fecha Estreno</th>
+        <th>¿Es Clasica?</th>
+        <th>Ver detalles</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="p : ${peliculas}">
+        <td th:text="${p.titulo}">Título</td>
+        <td th:text="${p.genero}">Género</td>
+        <td th:text="${p.puntuacion}">0.0</td>
+        <td>
+            <a th:href="${p.imbd}" target="_blank" rel="noopener noreferrer">IMDB</a>
+        </td>
+        <td>
+            <img th:src="${p.imagen}" th:alt="${p.titulo}" width="80">
+        </td>
+        <td th:text="${p.fechaEstreno}">YYYY-MM-DD</td>
+        <td th:text="${p.clasica} ? 'Sí' : 'No'">No</td>
+        <td>
+            <a class="btn" th:href="@{/peliculas/{id}(id=${p.identificador})}">Detalles</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

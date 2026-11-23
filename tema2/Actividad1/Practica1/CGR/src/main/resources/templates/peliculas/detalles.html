@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${pelicula.titulo}">Detalle de película</title>
+</head>
+<body>
+    <h1 th:text="${pelicula.titulo}">Título</h1>
+    <img th:src="${pelicula.imagen}" th:alt="${pelicula.titulo}" width="180">
+    <p><strong>Género:</strong> <span th:text="${pelicula.genero}"></span></p>
+    <p><strong>Puntuación:</strong> <span th:text="${pelicula.puntuacion}"></span></p>
+    <p><strong>Fecha de estreno:</strong> <span th:text="${pelicula.fechaEstreno}"></span></p>
+    <p><strong>¿Es clásica?:</strong> <span th:text="${pelicula.clasica} ? 'Sí' : 'No'"></span></p>
+    <p><a th:href="${pelicula.imbd}" target="_blank" rel="noopener noreferrer">Ver en IMDB</a></p>
+    <a th:href="@{/peliculas}">Volver al listado</a>
+</body>
+</html>

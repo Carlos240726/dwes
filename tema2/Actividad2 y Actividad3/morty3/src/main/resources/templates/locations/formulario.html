@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Location</title>
+</head>
+<body>
+    <form th:action="@{/locations/guardar}" th:object="${location}" method="post">
+        <input type="hidden" name="id" th:field="*{id}"/>
+        <label>Name:</label>
+        <input type="text" name="name" th:field="*{name}"/>
+        <label>Dimension:</label>
+        <input type="text" name="dimension" th:field="*{dimension}"/>
+        <label>Type:</label>
+        <input type="text" name="type" th:field="*{type}"/>
+        <label>Characters:</label>
+        <div class="checkbox" th:each="character : ${characters}">
+            <label>
+                <input type="checkbox" th:value="${character.id}" th:field="*{characters}"/>
+                <span th:text="${character.name}"></span>
+            </label>
+        </div>
+        <input type="submit" value="Create Location"/>
+    </form>
+</body>
+</html>

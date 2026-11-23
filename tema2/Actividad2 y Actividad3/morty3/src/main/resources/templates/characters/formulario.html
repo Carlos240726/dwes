@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario</title>
+</head>
+<body>
+    <form th:action="@{/characters/guardar}" th:object="${character}" method="post">
+        <input type="hidden" th:field="*{id}"/>
+        <label>Nombre:</label>
+        <input type="text" th:field="*{name}"/>
+        <label>Status:</label>
+        <input type="text" th:field="*{status}"/>
+        <label>Species:</label>
+        <input type="text" th:field="*{species}"/>
+        <label>Type:</label>
+        <input type="text" th:field="*{type}"/>
+        <label>Gender:</label>
+        <input type="text" th:field="*{gender}"/>
+        <label>Image:</label>
+        <input type="text" th:field="*{image}"/>
+        <label>Weight:</label>
+        <input type="text" th:field="*{weight}"/>
+        <label>Height:</label>
+        <input type="text" th:field="*{height}"/>
+        <label>Location:</label>
+        <select th:field="*{location_id}">
+            <option value="">Selecciona una ubicación</option>
+
+            <option th:each="location : ${locations}"
+                    th:value="${location.id}"
+                    th:text="${location.name}">
+            </option>
+        </select>
+        <label>Episodes:</label>
+        <div class="checkbox" th:each="episode : ${episodes}">
+            <label>
+                <input type="checkbox" th:value="${episode.id}" th:field="*{episodes_id}"/>
+                <span th:text="${episode.name}"></span>
+            </label>
+        </div>
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>
